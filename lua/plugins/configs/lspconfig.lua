@@ -4,10 +4,14 @@ require "nvchad.lsp"
 local M = {}
 local utils = require "core.utils"
 
+local copilot_cmp = require "copilot_cmp"
+
 -- export on_attach & capabilities for custom lspconfigs
 M.on_attach = function(client, bufnr)
   utils.load_mappings("lspconfig", { buffer = bufnr })
-
+  if client.name == "copilot" then
+    copilot_cmp._on_insert_enter({})
+  end
   if client.server_capabilities.signatureHelpProvider then
     require("nvchad.signature").setup(client)
   end

@@ -138,6 +138,16 @@ local default_plugins = {
           require("plugins.configs.others").luasnip(opts)
         end,
       },
+      
+      {
+        "zbirenbaum/copilot-cmp",
+        dependencies = "copilot.lua",
+        opts = {},
+        config = function(_, opts)
+          local copilot_cmp = require("copilot_cmp")
+          copilot_cmp.setup(opts)
+        end,
+      },
 
       -- autopairing of (){}[] etc
       {
@@ -175,12 +185,12 @@ local default_plugins = {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n", desc = "Comment toggle current line" },
-      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n", desc = "Comment toggle current block" },
-      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n",          desc = "Comment toggle current line" },
+      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n",          desc = "Comment toggle current block" },
+      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
     },
     init = function()
       require("core.utils").load_mappings "comment"

@@ -113,6 +113,12 @@ local options = {
   },
 }
 
+table.insert(options.sources, 1, {
+  name = "copilot",
+  group_index = 1,
+  priority = 100,
+})
+
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
   options.window.completion.border = border "CmpBorder"
 end
